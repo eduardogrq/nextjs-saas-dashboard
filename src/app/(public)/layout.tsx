@@ -7,7 +7,7 @@ export default function PublicLayout({
     <>
       <header>
         <nav>
-          <span>Next.js SaaS</span>
+          <span>Next.js SaaS Proobs</span>
         </nav>
       </header>
       <main>{children}</main>
