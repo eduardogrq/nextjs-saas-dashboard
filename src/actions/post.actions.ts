@@ -1,14 +1,18 @@
 "use server";
 
+import { prisma } from "@/lib/prisma";
+import { revalidatePath } from "next/cache";
+
 export async function createPost(formData: FormData): Promise<void> {
-    const title = formData.get("title");
+    const title = formData.get("title") as string | null;
 
-    if(!title){
-        console.log("Title required");
-        return;
-    }
+    if(!title) return;
 
-    console.log('Creating post:', title)
+    await prisma.post.create({
+        data: {
+            title: title,
+        }
+    })
 
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    revalidatePath("/dashboard");
 }
