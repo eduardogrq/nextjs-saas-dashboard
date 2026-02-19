@@ -1,3 +1,4 @@
+import { deletePost } from "@/actions/delete-post.actions";
 import { createPost } from "@/actions/post.actions";
 import SubmitButton from "@/components/SubmitButton";
 import { prisma } from "@/lib/prisma";
@@ -21,6 +22,10 @@ export default async function DashboardPage() {
       {posts.map((post) => (
         <div key={post.id}>
           <h3>{post.title}</h3>
+          <form action={deletePost}>
+            <input type="hidden" name="id" value={post.id} />
+            <button type="submit">Delete</button>
+          </form>
         </div>
       ))}
     </div>
