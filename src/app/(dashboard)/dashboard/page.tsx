@@ -1,4 +1,5 @@
 import { createPost } from "@/actions/post.actions";
+import SubmitButton from "@/components/SubmitButton";
 import { prisma } from "@/lib/prisma";
 
 export default async function DashboardPage() {
@@ -13,7 +14,7 @@ export default async function DashboardPage() {
       <h2>Create Post</h2>
       <form action={createPost}>
         <input type="text" name="title" placeholder="Post title" required />
-        <button type="submit">Create</button>
+        <SubmitButton />
       </form>
 
       <h2>Posts</h2>
