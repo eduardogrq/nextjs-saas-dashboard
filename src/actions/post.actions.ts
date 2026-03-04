@@ -10,9 +10,9 @@ export async function createPost(formData: FormData): Promise<void> {
 
     await prisma.post.create({
         data: {
-            title: title,
+            title,
         }
     })
 
-    revalidatePath("/dashboard");
+    revalidatePath("/", "layout");
 }

@@ -1,14 +1,10 @@
 import { deletePost } from "@/actions/delete-post.actions";
 import { createPost } from "@/actions/post.actions";
 import SubmitButton from "@/components/SubmitButton";
-import { prisma } from "@/lib/prisma";
+import { getPosts } from "@/lib/data";
 
 export default async function DashboardPage() {
-  const posts = await prisma.post.findMany({
-    orderBy: {
-      createdAt: "desc",
-    },
-  });
+  const posts = await getPosts();
 
   return (
     <div>

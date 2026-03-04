@@ -14,5 +14,5 @@ export async function deletePost(formData: FormData): Promise<void> {
     },
   });
 
-  revalidatePath("/dashboard");
+  revalidatePath("/", "layout");
 }
